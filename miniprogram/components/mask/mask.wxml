@@ -1,0 +1,4 @@
+<!--components/mask/mask.wxml-->
+<view class="mask">
+    <slot></slot>
+</view>

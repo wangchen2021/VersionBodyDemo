@@ -1,0 +1,74 @@
+/* packageVersion/components/serverCode/serverCode.wxss */
+.top-icon {
+    color: #ffffff85;
+    border: 4rpx solid #ffffff85;
+    width: 45rpx;
+    height: 45rpx;
+    font-size: 35rpx;
+    font-weight: bold;
+    position: fixed;
+    top: 100rpx;
+    left: 40rpx;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 45rpx;
+}
+
+.modal {
+    width: 578rpx;
+    height: 711rpx;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.close {
+    color: white;
+    position: absolute;
+    top: 40rpx;
+    right: 40rpx;
+}
+
+.qCode {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 210.18rpx;
+    height: 210.18rpx;
+}
+
+.word {
+    color: #969697;
+    text-align: center;
+    font-family: "Source Han Sans CN";
+    font-size: 26rpx;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 38rpx;
+    /* 146.154% */
+    letter-spacing: 0.5rpx;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 200rpx;
+}
+
+.btn {
+    width: 453.129rpx;
+    height: 78rpx;
+    border-radius: 8rpx;
+    background: #89abf046;
+    color: #4f7db2bb;
+    font-family: "PingFang SC";
+    font-size: 28rpx;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 78rpx;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 70rpx;
+    text-align: center;
+}

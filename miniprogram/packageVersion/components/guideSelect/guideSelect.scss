@@ -1,0 +1,129 @@
+/* packageVersion/components/guideSelect/guideSelect.wxss */
+.tip {
+    position: absolute;
+    top: 17%;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    opacity: 0;
+    animation: showTip linear forwards 1s;
+    animation-delay: 2s;
+    z-index: 1;
+
+    .h1 {
+        font-family: "PingFang SC";
+        font-size: 46rpx;
+        font-style: normal;
+        font-weight: 600;
+        line-height: normal;
+        letter-spacing: 4rpx;
+        background: linear-gradient(90deg, #D8E7FF 0%, #A0BFF5 127.34%);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .h2 {
+        color: #B1C7EE;
+        font-family: "PingFang SC";
+        font-size: 32rpx;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        letter-spacing: 4rpx;
+    }
+
+    @keyframes showTip {
+
+        from {
+            transform: translateY(30rpx);
+            opacity: 0;
+        }
+
+        to {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+
+}
+
+
+
+.head {
+    width: 109.475rpx;
+    height: 103.225rpx;
+    position: absolute;
+    left: 0%;
+    top: 35%;
+    animation: headMove linear forwards 0.6s;
+    animation-delay: 0.5s;
+    transform: translateX(-100rpx) rotateY(180deg) rotateZ(40deg);
+    z-index: 3;
+
+    @keyframes headMove {
+
+        from {
+            transform: translateX(-100rpx) rotateY(180deg) rotateZ(40deg);
+        }
+
+        to {
+            transform: translateX(270rpx) rotateY(180deg) rotateZ(40deg);
+        }
+    }
+}
+
+.part {
+    position: absolute;
+    left: 51%;
+    top: 39%;
+    width: 82rpx;
+    height: 96.445rpx;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    opacity: 0;
+    animation: showPart linear forwards 1.5s;
+    animation-delay: 1.7s;
+
+    @keyframes showPart {
+        from {
+            opacity: 0;
+        }
+
+        to {
+            opacity: 1;
+        }
+    }
+}
+
+.click {
+    position: absolute;
+    left: 51%;
+    top: 39%;
+    transform: translate(-50%, -50%);
+    width: 20rpx;
+    height: 20rpx;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.664);
+    animation: clickPoint linear forwards 1.5s;
+    animation-delay: 1.7s;
+    opacity: 0;
+    z-index: 2;
+
+    @keyframes clickPoint {
+        0% {
+            border: 0rpx solid rgba(255, 255, 255, 0.14);
+            opacity: 1;
+        }
+
+        50% {
+            border: 15rpx solid rgba(255, 255, 255, 0.14);
+            opacity: 1;
+        }
+
+        100% {
+            border: 5rpx solid rgba(255, 255, 255, 0.14);
+            opacity: 1;
+        }
+    }
+}

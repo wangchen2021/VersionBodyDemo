@@ -1,0 +1,3 @@
+<view class="container">
+    <image wx:for="{{imgs}}" wx:for-index="index" src="{{item}}" wx:key="index" mode="widthFix" class="{{selectIndex===index?'img img-select':'img'}}"></image>
+</view>

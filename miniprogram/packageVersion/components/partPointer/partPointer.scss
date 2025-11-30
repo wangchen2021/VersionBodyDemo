@@ -1,0 +1,440 @@
+/* packageVersion/components/partPointer/partPointer.wxss */
+.pointer-container {
+    position: absolute;
+    top: 50%;
+    left: 45%;
+    transform-origin: center;
+    transform: scale(0.6) translate(-50%, -50%);
+}
+
+.point {
+    width: 53.854rpx;
+    height: 53.854rpx;
+    animation: rotate infinite linear 2.5s;
+    position: relative;
+    overflow: visible;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.left {
+    .line-1 {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 0rpx;
+        height: 5rpx;
+        box-shadow: 0rpx 1.857rpx 1.857rpx 0rpx rgba(255, 255, 255, 0.44) inset;
+        background-color: #4F7DB2;
+        transform: rotate(-150deg) translateY(50%);
+        transform-origin: left;
+        animation: showLine1 0.7s linear forwards;
+    }
+
+    .line-2 {
+        position: absolute;
+        left: calc(50% - 100rpx);
+        top: calc(50% - 60rpx);
+        width: 0rpx;
+        height: 5rpx;
+        box-shadow: 0rpx 1.857rpx 1.857rpx 0rpx rgba(255, 255, 255, 0.44) inset;
+        background-color: #4F7DB2;
+        transform: rotate(-180deg) translateY(50%);
+        transform-origin: left;
+        animation: showLine2 0.3s linear forwards;
+        animation-delay: 0.7s;
+    }
+
+    .label {
+        border-radius: 126.279rpx;
+        border: 1.857rpx solid #FFF;
+        background: rgba(232, 232, 232, 0.54);
+        box-shadow: 16.713rpx 14.856rpx 27.856rpx 0rpx rgba(0, 0, 0, 0.05), -7.428rpx 24.142rpx 22.842rpx 0rpx rgba(255, 255, 255, 0.83) inset;
+        backdrop-filter: blur(59.88985824584961rpx);
+        min-width: 166.563rpx;
+        height: 67.48rpx;
+        box-sizing: border-box;
+        color: #495153;
+        font-family: "PingFang SC";
+        font-size: 30rpx;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 67.48rpx;
+        text-align: center;
+        position: absolute;
+        right: 155rpx;
+        top: -65rpx;
+        opacity: 0;
+        animation: showLabel linear forwards 0.4s;
+        animation-delay: 1s;
+        padding: 0 10rpx;
+        white-space: nowrap;
+    }
+}
+
+
+.right {
+    .line-1 {
+        position: absolute;
+        left: 40%;
+        top: 50%;
+        width: 0rpx;
+        height: 5rpx;
+        box-shadow: 0rpx 1.857rpx 1.857rpx 0rpx rgba(255, 255, 255, 0.44) inset;
+        background-color: #4F7DB2;
+        transform: rotate(-30deg) translateY(-50%);
+        transform-origin: left;
+        animation: showLine1right 0.7s linear forwards;
+    }
+
+    .line-2 {
+        position: absolute;
+        left: calc(50% + 90rpx);
+        top: calc(50% - 58rpx);
+        width: 0rpx;
+        height: 5rpx;
+        box-shadow: 0rpx 1.857rpx 1.857rpx 0rpx rgba(255, 255, 255, 0.44) inset;
+        background-color: #4F7DB2;
+        transform: translateY(50%);
+        transform-origin: left;
+        animation: showLine2right 0.3s linear forwards;
+        animation-delay: 0.7s;
+    }
+
+    .label {
+        border-radius: 126.279rpx;
+        border: 1.857rpx solid #FFF;
+        background: rgba(232, 232, 232, 0.54);
+        box-shadow: 16.713rpx 14.856rpx 27.856rpx 0rpx rgba(0, 0, 0, 0.05), -7.428rpx 24.142rpx 22.842rpx 0rpx rgba(255, 255, 255, 0.83) inset;
+        backdrop-filter: blur(59.88985824584961rpx);
+        min-width: 166.563rpx;
+        height: 67.48rpx;
+        box-sizing: border-box;
+        color: #495153;
+        font-family: "PingFang SC";
+        font-size: 30rpx;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 67.48rpx;
+        text-align: center;
+        position: absolute;
+        left: 152rpx;
+        top: -65rpx;
+        opacity: 0;
+        animation: showLabel linear forwards 0.4s;
+        animation-delay: 1s;
+        padding: 0 10rpx;
+        white-space: nowrap;
+    }
+
+    @keyframes showLine1right {
+        from {
+            width: 0;
+        }
+    
+        to {
+            width: 110rpx;
+        }
+    }
+    
+    @keyframes showLine2right {
+        from {
+            width: 0;
+        }
+    
+        to {
+            width: 30rpx;
+        }
+    }
+}
+
+.right-mid-long {
+    .line-1 {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 0rpx;
+        height: 5rpx;
+        box-shadow: 0rpx 1.857rpx 1.857rpx 0rpx rgba(255, 255, 255, 0.44) inset;
+        background-color: #4F7DB2;
+        transform: rotate(0deg) translateY(-50%);
+        transform-origin: left;
+        width: 0rpx;
+        animation: showLineLong 0.7s linear forwards;
+        @keyframes showLineLong {
+            from{
+                width: 0;
+            }
+            to{
+                width: 200rpx;
+            }
+        }
+    }
+    .label {
+        border-radius: 126.279rpx;
+        border: 1.857rpx solid #FFF;
+        background: rgba(232, 232, 232, 0.54);
+        box-shadow: 16.713rpx 14.856rpx 27.856rpx 0rpx rgba(0, 0, 0, 0.05), -7.428rpx 24.142rpx 22.842rpx 0rpx rgba(255, 255, 255, 0.83) inset;
+        backdrop-filter: blur(59.88985824584961rpx);
+        min-width: 166.563rpx;
+        height: 67.48rpx;
+        box-sizing: border-box;
+        color: #495153;
+        font-family: "PingFang SC";
+        font-size: 30rpx;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 67.48rpx;
+        text-align: center;
+        position: absolute;
+        left: 185rpx;
+        top: 0rpx;
+        opacity: 0;
+        animation: showLabel linear forwards 0.4s;
+        animation-delay: 1s;
+        padding: 0 10rpx;
+        white-space: nowrap;
+    }
+}
+
+.left-mid-long {
+    .line-1 {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 0rpx;
+        height: 5rpx;
+        box-shadow: 0rpx 1.857rpx 1.857rpx 0rpx rgba(255, 255, 255, 0.44) inset;
+        background-color: #4F7DB2;
+        transform: rotate(-180deg) translateY(-50%);
+        transform-origin: left;
+        width: 0rpx;
+        animation: showLineLong 0.7s linear forwards;
+        @keyframes showLineLong {
+            from{
+                width: 0;
+            }
+            to{
+                width: 200rpx;
+            }
+        }
+    }
+    .label {
+        border-radius: 126.279rpx;
+        border: 1.857rpx solid #FFF;
+        background: rgba(232, 232, 232, 0.54);
+        box-shadow: 16.713rpx 14.856rpx 27.856rpx 0rpx rgba(0, 0, 0, 0.05), -7.428rpx 24.142rpx 22.842rpx 0rpx rgba(255, 255, 255, 0.83) inset;
+        backdrop-filter: blur(59.88985824584961rpx);
+        min-width: 166.563rpx;
+        height: 67.48rpx;
+        box-sizing: border-box;
+        color: #495153;
+        font-family: "PingFang SC";
+        font-size: 30rpx;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 67.48rpx;
+        text-align: center;
+        position: absolute;
+        right: 215rpx;
+        top: 0rpx;
+        opacity: 0;
+        animation: showLabel linear forwards 0.4s;
+        animation-delay: 1s;
+        padding: 0 10rpx;
+        white-space: nowrap;
+    }
+}
+
+.right-short {
+    .line-1 {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 0rpx;
+        height: 5rpx;
+        box-shadow: 0rpx 1.857rpx 1.857rpx 0rpx rgba(255, 255, 255, 0.44) inset;
+        background-color: #4F7DB2;
+        transform: rotate(-30deg) translateY(-50%);
+        transform-origin: left;
+        width: 0rpx;
+        animation: showLineShort 0.7s linear forwards;
+        @keyframes showLineShort {
+            from{
+                width: 0;
+            }
+            to{
+                width: 100rpx;
+            }
+        }
+    }
+    .label {
+        border-radius: 126.279rpx;
+        border: 1.857rpx solid #FFF;
+        background: rgba(232, 232, 232, 0.54);
+        box-shadow: 16.713rpx 14.856rpx 27.856rpx 0rpx rgba(0, 0, 0, 0.05), -7.428rpx 24.142rpx 22.842rpx 0rpx rgba(255, 255, 255, 0.83) inset;
+        backdrop-filter: blur(59.88985824584961rpx);
+        min-width: 166.563rpx;
+        height: 67.48rpx;
+        box-sizing: border-box;
+        color: #495153;
+        font-family: "PingFang SC";
+        font-size: 30rpx;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 67.48rpx;
+        text-align: center;
+        position: absolute;
+        left: 100rpx;
+        top: -50rpx;
+        opacity: 0;
+        animation: showLabel linear forwards 0.4s;
+        animation-delay: 1s;
+        padding: 0 10rpx;
+        white-space: nowrap;
+    }
+}
+
+
+.right-high {
+    .line-1 {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 0rpx;
+        height: 5rpx;
+        box-shadow: 0rpx 1.857rpx 1.857rpx 0rpx rgba(255, 255, 255, 0.44) inset;
+        background-color: #4F7DB2;
+        transform: rotate(-60deg) translateY(-50%);
+        transform-origin: left;
+        width: 0rpx;
+        animation: showLineShort 0.7s linear forwards;
+        @keyframes showLineShort {
+            from{
+                width: 0;
+            }
+            to{
+                width: 120rpx;
+            }
+        }
+    }
+
+    .line-2 {
+        position: absolute;
+        left: calc(50% + 60rpx);
+        top: calc(50% - 107rpx);
+        width: 0rpx;
+        height: 5rpx;
+        box-shadow: 0rpx 1.857rpx 1.857rpx 0rpx rgba(255, 255, 255, 0.44) inset;
+        background-color: #4F7DB2;
+        transform: translateY(50%);
+        transform-origin: left;
+        animation: showLine2high 0.3s linear forwards;
+        animation-delay: 0.7s;
+    }
+
+    .label {
+        border-radius: 126.279rpx;
+        border: 1.857rpx solid #FFF;
+        background: rgba(232, 232, 232, 0.54);
+        box-shadow: 16.713rpx 14.856rpx 27.856rpx 0rpx rgba(0, 0, 0, 0.05), -7.428rpx 24.142rpx 22.842rpx 0rpx rgba(255, 255, 255, 0.83) inset;
+        backdrop-filter: blur(59.88985824584961rpx);
+        min-width: 166.563rpx;
+        height: 67.48rpx;
+        box-sizing: border-box;
+        color: #495153;
+        font-family: "PingFang SC";
+        font-size: 30rpx;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 67.48rpx;
+        text-align: center;
+        position: absolute;
+        left: 130rpx;
+        top: -115rpx;
+        opacity: 0;
+        animation: showLabel linear forwards 0.4s;
+        animation-delay: 1s;
+        padding: 0 10rpx;
+        white-space: nowrap;
+    }
+}
+
+
+@keyframes showLine1 {
+    from {
+        width: 0;
+    }
+
+    to {
+        width: 100rpx;
+    }
+}
+
+@keyframes showLine2 {
+    from {
+        width: 0;
+    }
+
+    to {
+        width: 40rpx;
+    }
+}
+
+@keyframes showLine2high {
+    from {
+        width: 0;
+    }
+
+    to {
+        width: 40rpx;
+    }
+}
+
+@keyframes showLabel {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes showLine1 {
+    from {
+        width: 0;
+    }
+
+    to {
+        width: 120rpx;
+    }
+}
+
+@keyframes showLine2 {
+    from {
+        width: 0;
+    }
+
+    to {
+        width: 40rpx;
+    }
+}
+
+@keyframes showLabel {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}

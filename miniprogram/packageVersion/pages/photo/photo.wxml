@@ -1,0 +1,31 @@
+<scroll-view scroll-y enhanced show-scrollbar="{{false}}" style="height: 100vh;">
+    <navBack></navBack>
+    <view class="list">
+        <block wx:for="{{plans}}" wx:for-item="plan" wx:for-index="index" wx:key="index" class="photo">
+            <view data-index="{{2*index}}" data-plan="{{plan}}" data-direction="left" bind:tap="showBottom" class="photo">
+                <image mode="widthFix" class="img" src="{{plan.coverImg.left}}">
+                    <image wx:if="{{takePhotos[2*index]}}" class="take-img" src="{{takePhotos[2*index]}}"></image>
+                </image>
+                <view class="name">{{plan.photoName.left}}</view>
+                <image class="icon" mode="widthFix" src="../../../assets/icon/common/photo.svg"></image>
+            </view>
+            <view data-index="{{2*index+1}}" data-plan="{{plan}}" data-direction="right" bind:tap="showBottom" bind:tap="showBottom" class="photo">
+                <image mode="widthFix" class="img" src="{{plan.coverImg.right}}">
+                    <image wx:if="{{takePhotos[2*index+1]}}" class="take-img" src="{{takePhotos[2*index+1]}}"></image>
+                </image>
+                <view class="name">{{plan.photoName.right}}</view>
+                <image class="icon" mode="widthFix" src="../../../assets/icon/common/photo.svg"></image>
+            </view>
+        </block>
+    </view>
+    <view wx:if="{{finish}}" bind:tap="submitPhotos" class="btn">提交评估</view>
+    <view wx:if="{{!finish}}" bind:tap="warnSubmit" style="opacity: 0.5;" class="btn">提交评估</view>
+    <view style="height: 200rpx;"></view>
+    <mask bind:tap="hideBottom" wx:if="{{selectIndex>=0}}">
+        <view catch:tap="nothing" class="bottom-wrapper">
+            <view bind:tap="showCamera" style="margin-top: 0rpx;" class="btn">拍照</view>
+            <view bind:tap="chooseAlbum" class="btn sub-btn">从相册选择</view>
+        </view>
+    </mask>
+</scroll-view>
+<jzCamera bind:update="getTakePhotos" id="jzCamera"></jzCamera>

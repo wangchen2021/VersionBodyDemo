@@ -1,0 +1,102 @@
+/* packageVersion/pages/photo/photo.wxss */
+.list {
+    margin-top: 250rpx;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 0 50rpx;
+}
+
+.photo {
+    position: relative;
+}
+
+.icon {
+    position: absolute;
+    left: 50%;
+    top: 43%;
+    transform: translate(-50%, -50%);
+    width: 79.446rpx;
+    height: 73.772rpx;
+}
+
+.img {
+    width: 304.307rpx;
+    height: 398.181rpx;
+    position: relative;
+    overflow: hidden;
+}
+
+.take-img{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: white;
+    border: 4rpx solid #00FFE1;
+    box-sizing: border-box;
+    border-radius: 17rpx;
+}
+
+.name {
+    color: #5B6B7D;
+    text-align: center;
+    font-family: "Source Han Sans CN";
+    font-size: 36rpx;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 54.016rpx;
+    /* 150.043% */
+    letter-spacing: 0.711rpx;
+    margin-top: 15rpx;
+    margin-bottom: 20rpx;
+}
+
+.btn {
+    width: 523.848rpx;
+    height: 86.687rpx;
+    border-radius: 12rpx;
+    border: 0.5rpx solid #89ACF0;
+    background: linear-gradient(111deg, #B1D0F0 -34.78%, #609DE3 87.16%);
+    box-shadow: -3rpx -4rpx 4rpx 0rpx rgba(0, 0, 0, 0.10) inset, 6rpx 8rpx 11.1rpx 0rpx rgba(255, 255, 255, 0.40) inset, 3rpx 7rpx 18.6rpx 0rpx rgba(25, 30, 47, 0.17);
+    color: #FFF;
+    font-family: "PingFang SC";
+    font-size: 32rpx;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 86.687rpx;
+    text-align: center;
+    margin: 0 auto;
+    margin-top: 110rpx;
+}
+
+.bottom-wrapper {
+    width: 750rpx;
+    height: 399.823rpx;
+    background-color: white;
+    border-top-left-radius: 30rpx;
+    border-top-right-radius: 30rpx;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    box-sizing: border-box;
+    padding-top: 80rpx;
+    animation: showBottom ease forwards 0.3s;
+
+    @keyframes showBottom {
+        from {
+            transform: translateY(70%);
+        }
+
+        to {
+            transform: translateY(0%);
+        }
+    }
+}
+
+.sub-btn {
+    margin-top: 40rpx;
+    background: white;
+    color: #69A3E5;
+}

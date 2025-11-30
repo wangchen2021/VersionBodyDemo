@@ -1,0 +1,27 @@
+<view class="container">
+    <view id="slider" class="slider">
+        <view style="width:{{value*10+'%'}};" class="select"></view>
+        <view class="units">
+            <view class="unit-item"></view>
+            <view class="unit-item"></view>
+            <view class="unit-item"></view>
+            <view class="unit-item"></view>
+            <view class="unit-item"></view>
+            <view class="unit-item"></view>
+            <view class="unit-item"></view>
+            <view class="unit-item"></view>
+            <view class="unit-item"></view>
+        </view>
+        <view bind:touchmove="move" style="left: {{value*10+'%'}};" class="select-circule"></view>
+    </view>
+    <view class="scores">
+        <view wx:for="{{scores}}" wx:for-index="index" wx:key="index">
+            {{item.value}}
+        </view>
+    </view>
+    <view class="scores labels">
+        <view class="label" wx:for="{{scores}}" wx:for-index="index" wx:key="index">
+            {{language[item.label]}}
+        </view>
+    </view>
+</view>

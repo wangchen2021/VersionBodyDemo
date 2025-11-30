@@ -1,0 +1,82 @@
+<mask wx:if="{{show}}">
+  <block wx:if="{{!select}}">
+    <image mode="widthFix" class="img" src="https://cos.painspective.com/jizhi/miniProgram/public/20240724-161022.png">
+      <view class="container">
+        <view class="container-padding"></view>
+        <textarea adjust-position="{{false}}" placeholder-style="color:#BAC4E1" bindinput="inputHandle" data-param="name" value="{{name}}" maxlength="{{10}}" placeholder="请输入姓名" style="height: 86rpx;" class="input" />
+        <textarea adjust-position="{{false}}" placeholder-style="color:#BAC4E1" bindinput="inputHandle" data-param="phone" type="number" value="{{phone}}" maxlength="{{20}}" placeholder="请输入联系电话" style="height: 86rpx;" class="input" />
+        <picker mode="region" bindchange="bindRegionChange" value="{{cityArr}}">
+          <view data-param="city" value="{{city}}" maxlength="{{30}}" class="input">
+            <view wx:if="{{city==''}}" class="placeholder">请输入省市</view>
+            <view class="city-str" wx:else>{{city}}</view>
+          </view>
+        </picker>
+        <textarea placeholder-style="color:#BAC4E1" bindinput="inputHandle" data-param="address" value="{{address}}" maxlength="{{100}}" placeholder="请输入详细收货地址" style="height: 150rpx;" class="input"></textarea>
+        <view wx:if="{{edit}}" catch:tap="submit" class="btn">保存</view>
+        <view wx:if="{{!edit}}" class="cover"></view>
+      </view>
+      <image catch:tap="exit" src="../../assets/icon/common/exitC.svg" mode="widthFix" class="exit"></image>
+    </image>
+  </block>
+  <block wx:else>
+    <image mode="widthFix" class="img" src="https://cos.painspective.com/jizhi/miniProgram/public/20241217-213130.png">
+      <view class="container">
+        <view class="container-padding"></view>
+        <textarea adjust-position="{{false}}" placeholder-style="color:#BAC4E1" bindinput="inputHandle" data-param="name" value="{{name}}" maxlength="{{10}}" placeholder="请输入姓名" style="height: 86rpx;" class="input" />
+        <textarea adjust-position="{{false}}" placeholder-style="color:#BAC4E1" bindinput="inputHandle" data-param="phone" type="number" value="{{phone}}" maxlength="{{20}}" placeholder="请输入联系电话" style="height: 86rpx;" class="input" />
+        <picker range="{{giftOptions}}" bindchange="bindGiftChange" value="{{giftIndex}}">
+          <view class="input">
+            <view wx:if="{{giftType==''}}" class="placeholder">请选择礼包</view>
+            <view class="city-str" wx:else>{{giftType}}</view>
+          </view>
+        </picker>
+        <picker mode="region" bindchange="bindRegionChange" value="{{cityArr}}">
+          <view data-param="city" value="{{city}}" maxlength="{{30}}" class="input">
+            <view wx:if="{{city==''}}" class="placeholder">请输入省市</view>
+            <view class="city-str" wx:else>{{city}}</view>
+          </view>
+        </picker>
+        <textarea placeholder-style="color:#BAC4E1" bindinput="inputHandle" data-param="address" value="{{address}}" maxlength="{{100}}" placeholder="请输入详细收货地址" style="height: 150rpx;" class="input"></textarea>
+        <view wx:if="{{edit}}" catch:tap="submit" class="btn">保存</view>
+        <view wx:if="{{!edit}}" class="cover"></view>
+      </view>
+      <image catch:tap="exit" src="../../assets/icon/common/exitC.svg" mode="widthFix" class="exit"></image>
+    </image>
+  </block>
+  <mask wx:if="{{showConfirm}}">
+    <view class="pop">
+      <view class="title-word">确认保存</view>
+      <view class="h1">请仔细检查您输入的地址，确保其为正确的收货地址。一旦您点击确认，我们将无法更改此地址。~</view>
+      <view class="confrim-btns">
+        <view bind:tap="hideConfirm" class="pop-btn-cancel">
+          取消
+        </view>
+        <view bind:tap="confrimSubmit" class="pop-btn-confrim">
+          确认
+        </view>
+      </view>
+    </view>
+  </mask>
+  <mask wx:if="{{state==0}}">
+    <view class="pop">
+      <image src="https://cos.painspective.com/jizhi/miniProgram/public/20240813-194732.png" mode="widthFix" class="title"></image>
+      <view class="h1">恭喜您领取康复装备成功！我们将在发货后通过微信及时发送快递单号，敬请耐心等待哦~</view>
+      <view bind:tap="hideState" class="pop-btn">
+        知道了
+      </view>
+    </view>
+  </mask>
+  <mask wx:if="{{state==1}}">
+    <view class="pop">
+      <image src="https://cos.painspective.com/jizhi/miniProgram/public/20240813-194753.png" mode="widthFix" class="title"></image>
+      <view class="h1">快递单号</view>
+      <view data-data="{{userInfo.address.sendId}}" bind:tap="copySendId" class="h1">
+        <text>{{userInfo.address.sendId}}</text>
+        <image src="../../assets/icon/common/copy.svg" mode="widthFix" class="icon"></image>
+      </view>
+      <view bind:tap="hideState" class="pop-btn">
+        知道了
+      </view>
+    </view>
+  </mask>
+</mask>

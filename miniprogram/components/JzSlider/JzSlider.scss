@@ -1,0 +1,106 @@
+/* components/JzSlider/JzSlider.wxss */
+.container {
+    width: 100%;
+    height: 100%;
+    padding-top: 60rpx;
+    box-sizing: border-box;
+}
+
+.slider {
+    position: relative;
+    width: 575rpx;
+    margin: 0 auto;
+    height: 15rpx;
+    border-radius: 16rpx;
+    background: #7eafe7ab;
+    box-shadow: 0rpx 4rpx 11.7rpx 0rpx rgba(25, 30, 47, 0.17), 6rpx 8rpx 11.1rpx 0rpx rgba(255, 255, 255, 0.63) inset, -3rpx -4rpx 4rpx 0rpx rgba(0, 0, 0, 0.10) inset;
+    overflow: visible;
+}
+
+.select {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    border-radius: 16rpx;
+    background-color: #61a3f0;
+    box-shadow: 0rpx 4rpx 11.7rpx 0rpx rgba(25, 30, 47, 0.17), 6rpx 8rpx 11.1rpx 0rpx rgba(255, 255, 255, 0.63) inset, -3rpx -4rpx 4rpx 0rpx rgba(0, 0, 0, 0.10) inset;
+}
+
+.select-circule {
+    position: absolute;
+    top: 50%;
+    left: 0%;
+    transform: translate(-50%, -50%);
+    width: 45rpx;
+    height: 45rpx;
+    background-color: #6DA1DC;
+    border-radius: 50%;
+    box-sizing: border-box;
+    border: 7rpx solid white;
+    box-shadow: 0rpx 4rpx 11.7rpx 0rpx rgba(25, 30, 47, 0.17), 6rpx 8rpx 11.1rpx 0rpx rgba(255, 255, 255, 0.63);
+    animation: flash infinite linear 1.2s;
+
+    @keyframes flash {
+        0% {
+            background-color: #6da1dcb7;
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        50% {
+            background-color: #64acfd;
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+
+        100% {
+            background-color: #6da1dcb7;
+            transform: translate(-50%, -50%) scale(1);
+        }
+    }
+}
+
+.units {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    box-sizing: border-box;
+    padding: 0 60rpx;
+}
+
+.unit-item {
+    width: 4rpx;
+    height: 100%;
+    background: #fefbfa4d;
+}
+
+.scores {
+    margin: 0 auto;
+    margin-top: 27rpx;
+    width: 585rpx;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #5B6B7D;
+    text-align: center;
+    font-family: "PingFang SC";
+    font-size: 23.99rpx;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 29.987rpx;
+    /* 125% */
+}
+
+.labels {
+    width: 670rpx;
+    margin-left: -30rpx;
+}
+
+.label {
+    width: 90rpx;
+    text-align: center;
+}

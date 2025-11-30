@@ -1,0 +1,23 @@
+<camera device-position="back" wx:if="{{show}}" class="camera">
+    <navBack bind:tap="hide" stopDefault="{{true}}"></navBack>
+    <view style="top: {{navTop}}px;" class="name">{{name}}</view>
+    <view class="top"></view>
+    <image src="{{coverImg}}" mode="widthFix" class="cover-img"></image>
+    <view class="bottom">
+        <view bind:tap="getPhotos" class="btn">拍照</view>
+        <scroll-view scroll-with-animation scroll-into-view="{{currentItem}}" class="list" scroll-x enhanced show-scrollbar="{{false}}">
+            <block wx:for="{{plans}}" wx:for-index="index" wx:key="index">
+                <view id="{{'item'+(2*index)}}" bind:tap="setIndex" data-index="{{2*index}}" class="{{selectIndex==2*index?'item item-active':'item'}}">
+                    <image wx:if="{{!takePhotos[2*index]}}" class="item-img" mode="heightFix" src="{{item.coverImg.left}}"></image>
+                    <image wx:else class="item-img" src="{{takePhotos[2*index]}}"></image>
+                    <view class="item-name">{{item.photoName.left}}</view>
+                </view>
+                <view id="{{'item'+(2*index+1)}}" bind:tap="setIndex" data-index="{{2*index+1}}" class="{{selectIndex==2*index+1?'item item-active':'item'}}">
+                    <image wx:if="{{!takePhotos[2*index+1]}}" class="item-img" mode="heightFix" src="{{item.coverImg.right}}"></image>
+                    <image wx:else class="item-img" src="{{takePhotos[2*index+1]}}"></image>
+                    <view class="item-name">{{item.photoName.right}}</view>
+                </view>
+            </block>
+        </scroll-view>
+    </view>
+</camera>

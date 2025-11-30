@@ -1,0 +1,9 @@
+<view bind:tap="showModal" style="top:{{navTop}}px" class="top-icon">?</view>
+<mask wx:if="{{show}}">
+    <image show-menu-by-longpress src="https://cos.painspective.com/jizhi/miniProgram/public/20240428-161902.png" mode="widthFix" class="modal">
+        <view bind:tap="close" class="close">X</view>
+        <image show-menu-by-longpress src="{{qCode}}" mode="widthFix" class="qCode"></image>
+        <view class="word">长按二维码联系客服</view>
+        <view bind:tap="goIndex" class="btn">返回首页</view>
+    </image>
+</mask>

@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+      "navBack":"../../../components/navBack/navBack",
+      "mask":"../../../components/mask/mask",
+      "jzCamera":"../../components/jzCamera/jzCamera"
+  }
+}

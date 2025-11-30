@@ -1,0 +1,9 @@
+<mask wx:if="{{show}}" bind:tap="hide">
+    <view class="tip">
+        <view class="h1">点击感到不适的部位</view>
+        <view class="h2">Touch pain location</view>
+    </view>
+    <view class="click"></view>
+    <image class="part" src="https://cos.painspective.com/jizhi/miniProgram/public/20240404-161546.png"></image>
+    <image mode="widthFix" class="head" src="https://cos.painspective.com/jizhi/miniProgram/public/index/20240414-140129.png"></image>
+</mask>

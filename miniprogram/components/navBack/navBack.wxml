@@ -1,0 +1,1 @@
+<image src="../../assets/icon/common/navBack.png" bind:tap="navgationBack" style="top: {{navTop}}px;" class="back-icon"></image>

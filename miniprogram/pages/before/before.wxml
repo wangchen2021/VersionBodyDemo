@@ -1,0 +1,143 @@
+<view class="container">
+  <!-- 头部标题 -->
+  <view class="header">
+    <text class="title">属性选择器</text>
+    <text class="subtitle">选择您调律的属性词条，已选属性将显示在页面底部</text>
+  </view>
+
+  <!-- 基本数据类型 -->
+  <view class="category-card">
+    <view class="category-header">
+      <icon class="icon" type="info" size="20" color="#8B0000" />
+      <text class="category-title">基本数据类型</text>
+    </view>
+    <view class="items-container">
+      <block wx:for="{{basicAttributes}}" wx:key="index">
+        <view class="item {{selectedItems.indexOf(item) !== -1 ? 'selected' : ''}}" bindtap="selectItem" data-value="{{item}}">
+          <view style="width: {{result.prediction.next_keyword_probs[item]+'%'}};" class="item-active"></view>
+          <view style="z-index: 1;display: flex;justify-content: space-between;width: 100%;">
+            <text>{{item}}</text>
+            <text class="prob-text" wx:if="{{result}}">{{result.prediction.next_keyword_probs[item]+'%'}}</text>
+          </view>
+        </view>
+      </block>
+    </view>
+  </view>
+
+  <!-- 五维数据类型 -->
+  <view class="category-card">
+    <view class="category-header">
+      <icon class="icon" type="info" size="20" color="#8B0000" />
+      <text class="category-title">五维数据类型</text>
+    </view>
+    <view class="items-container">
+      <block wx:for="{{fiveDAttributes}}" wx:key="index">
+        <view class="item {{selectedItems.indexOf(item) !== -1 ? 'selected' : ''}}" bindtap="selectItem" data-value="{{item}}">
+          <view style="width: {{result.prediction.next_keyword_probs[item]+'%'}};" class="item-active"></view>
+          <view style="z-index: 1;display: flex;justify-content: space-between;width: 100%;">
+            <text>{{item}}</text>
+            <text class="prob-text" wx:if="{{result}}">{{result.prediction.next_keyword_probs[item]+'%'}}</text>
+          </view>
+        </view>
+      </block>
+    </view>
+  </view>
+
+  <!-- 判定率数据类型 -->
+  <view class="category-card">
+    <view class="category-header">
+      <icon class="icon" type="info" size="20" color="#8B0000" />
+      <text class="category-title">判定率数据类型</text>
+    </view>
+    <view class="items-container">
+      <block wx:for="{{judgeAttributes}}" wx:key="index">
+        <view class="item {{selectedItems.indexOf(item) !== -1 ? 'selected' : ''}}" bindtap="selectItem" data-value="{{item}}">
+          <view style="width: {{result.prediction.next_keyword_probs[item]+'%'}};" class="item-active"></view>
+          <view style="z-index: 1;display: flex;justify-content: space-between;width: 100%;">
+            <text>{{item}}</text>
+            <text class="prob-text" wx:if="{{result}}">{{result.prediction.next_keyword_probs[item]+'%'}}</text>
+          </view>
+        </view>
+      </block>
+    </view>
+  </view>
+
+  <!-- 属性攻击数据类型 -->
+  <view class="category-card">
+    <view class="category-header">
+      <icon class="icon" type="info" size="20" color="#8B0000" />
+      <text class="category-title">属性攻击数据类型</text>
+    </view>
+    <view class="items-container">
+      <block wx:for="{{attackAttributes}}" wx:key="index">
+        <view class="item {{selectedItems.indexOf(item) !== -1 ? 'selected' : ''}}" bindtap="selectItem" data-value="{{item}}">
+          <view style="width: {{result.prediction.next_keyword_probs[item]+'%'}};" class="item-active"></view>
+          <view style="z-index: 1;display: flex;justify-content: space-between;width: 100%;">
+            <text>{{item}}</text>
+            <text class="prob-text" wx:if="{{result}}">{{result.prediction.next_keyword_probs[item]+'%'}}</text>
+          </view>
+        </view>
+      </block>
+    </view>
+  </view>
+
+
+  <!-- 特殊属性类型 -->
+  <view class="category-card">
+    <view class="category-header">
+      <icon class="icon" type="info" size="20" color="#8B0000" />
+      <text class="category-title">特殊攻击数据类型</text>
+    </view>
+    <view class="items-container">
+      <block wx:for="{{specialAttributes}}" wx:key="index">
+        <view class="item {{selectedItems.indexOf(item) !== -1 ? 'selected' : ''}}" bindtap="selectItem" data-value="{{item}}">
+          <view style="width: {{result.prediction.next_keyword_probs[item]+'%'}};" class="item-active"></view>
+          <view style="z-index: 1;display: flex;justify-content: space-between;width: 100%;">
+            <text>{{item}}</text>
+            <text class="prob-text" wx:if="{{result}}">{{result.prediction.next_keyword_probs[item]+'%'}}</text>
+          </view>
+        </view>
+      </block>
+    </view>
+  </view>
+  <view style="height: 900rpx;"></view>
+
+  <!-- 已选属性区域 -->
+  <view class="selected-items">
+    <view class="selected-header">
+      <text class="selected-title">已选属性</text>
+      <text class="counter">{{selectedItems.length}}</text>
+      <button class="clear-btn danger" bindtap="clearAll">清空</button>
+    </view>
+    <scroll-view scroll-into-view="{{scrollId}}" scroll-y class="scroll-view">
+      <view class="selected-list">
+        <block wx:if="{{selectedItems.length === 0}}">
+          <text class="placeholder">请从上方选择属性...（需要至少垫10手才能进行分析评估）</text>
+        </block>
+        <block wx:else>
+          <block wx:for="{{selectedItems}}" wx:key="index">
+            <view class="selected-item">
+              <text>{{item}}</text>
+              <icon class="remove-icon" type="clear" size="16" color="#fff" bindtap="removeItem" data-index="{{index}}" />
+            </view>
+          </block>
+        </block>
+      </view>
+      <view id="line" style="height: 10rpx;"></view>
+    </scroll-view>
+    <block wx:if="{{result}}">
+      <view class="split-line"></view>
+      <text class="selected-title">下次出现概率较高的词条</text>
+      <view class="selected-title">推荐词条({{result.current_type}})：<text style="color: rgb(255, 40, 16);font-weight: bold;">{{result.prediction.rec_total}}</text></view>
+      <view style="height: 400rpx;overflow: auto;" class="selected-list">
+        <block wx:for="{{result.prediction.top10_keywords}}" wx:key="index">
+          <view class="high-ci">
+            <text>{{item.keyword}}</text>
+            <text wx:if="{{item.is_recommended}}" class="star">★</text>
+            <text>{{item.probability}}</text>
+          </view>
+        </block>
+      </view>
+    </block>
+  </view>
+</view>

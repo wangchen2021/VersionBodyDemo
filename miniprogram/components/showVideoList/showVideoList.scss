@@ -1,0 +1,34 @@
+/* components/showVideoList/showVideoList.wxss */
+.container {
+    position: absolute;
+    left: 51%;
+    top: 43%;
+    transform: translate(-50%, -50%);
+    width: 504rpx;
+    height: 504rpx;
+    overflow: hidden;
+    background-color: #E0E8F2;
+    text-align: center;
+}
+
+.img {
+    width: 490rpx;
+    margin-bottom: -75rpx;
+    animation: showList ease forwards 2.5s;
+    opacity: 0.7;
+    animation-delay: 1.5s;
+}
+
+@keyframes showList {
+    from {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(-520%);
+    }
+}
+
+.img-select {
+    opacity: 1;
+}

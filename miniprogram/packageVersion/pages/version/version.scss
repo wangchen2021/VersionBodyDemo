@@ -1,0 +1,341 @@
+/* packageVersion/version/version.wxss */
+.label {
+  font-size: 35px;
+  color: black;
+  font-weight: bold;
+  background-color: white;
+}
+
+.video {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+
+  .video-filter {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #E7E7E7;
+    animation: showFilter linear forwards 0.7s;
+  }
+
+  @keyframes showFilter {
+
+    from {
+      opacity: 1;
+    }
+
+    to {
+      opacity: 0;
+    }
+  }
+}
+
+.camera {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20vw;
+  height: 20vh;
+  top: 180rpx;
+  right: 25rpx;
+  transition: all 0.5s;
+
+  .light {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border: 100rpx solid rgba(0, 0, 0, 0.5);
+    box-sizing: border-box;
+    border-top: 200rpx solid rgba(0, 0, 0, 0.5);
+  }
+
+  .frame {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+  }
+
+  .frame-border {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    border: 20rpx solid;
+    border-color: #4DFFEA;
+    border-radius: 24rpx;
+    z-index: 3;
+  }
+
+  .scan {
+    position: absolute;
+    left: 50%;
+    top: 0%;
+    transform: translateX(-50%);
+    width: 80%;
+    height: 40%;
+    background: linear-gradient(179deg, rgba(77, 255, 234, 0.00) -4.69%, #00FFE1 147.11%);
+    animation: showScan linear forwards 2s;
+
+    @keyframes showScan {
+      from {
+        top: 0%;
+      }
+
+      to {
+        top: 60%;
+      }
+    }
+  }
+
+  .frame-border-error {
+    border-color: #FF4D4D;
+  }
+
+  .error {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    border: 300rpx solid;
+    border-color: #ff000049;
+    z-index: 2;
+    animation: showError linear forwards infinite 1.5s;
+
+    @keyframes showError {
+      0% {
+        opacity: 0;
+      }
+
+      50% {
+        opacity: 1;
+      }
+
+      100% {
+        opacity: 0;
+      }
+    }
+  }
+
+  .frame-pointer {
+    position: absolute;
+    top: 150rpx;
+    left: 60rpx;
+    width: 170rpx;
+    height: 125rpx;
+    animation: showFramePointer linear infinite 1s;
+    opacity: 0.7;
+
+    @keyframes showFramePointer {
+      0% {
+        left: 60rpx;
+        opacity: 0.7;
+      }
+
+      70% {
+        left: 20rpx;
+        opacity: 1;
+      }
+
+      100% {
+        left: 60rpx;
+        opacity: 0.7;
+      }
+    }
+  }
+
+}
+
+.camera-nobody {
+  top: 0;
+  right: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+
+
+.camera-android {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 0;
+  right: 0;
+  width: 100vw;
+  height: 100vh;
+  opacity: 0;
+
+  .light {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border: 100rpx solid rgba(0, 0, 0, 0.5);
+    box-sizing: border-box;
+    border-top: 200rpx solid rgba(0, 0, 0, 0.5);
+  }
+
+  .frame {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+  }
+
+  .frame-border {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    border: 20rpx solid;
+    border-color: #4DFFEA;
+    border-radius: 24rpx;
+    z-index: 3;
+  }
+
+  .scan {
+    position: absolute;
+    left: 50%;
+    top: 0%;
+    transform: translateX(-50%);
+    width: 80%;
+    height: 40%;
+    background: linear-gradient(179deg, rgba(77, 255, 234, 0.00) -4.69%, #00FFE1 147.11%);
+    animation: showScan linear forwards 2s;
+
+    @keyframes showScan {
+      from {
+        top: 0%;
+      }
+
+      to {
+        top: 60%;
+      }
+    }
+  }
+
+  .frame-border-error {
+    border-color: #FF4D4D;
+  }
+
+  .error {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    border: 300rpx solid;
+    border-color: #ff000049;
+    z-index: 2;
+    animation: showError linear forwards infinite 1.5s;
+
+    @keyframes showError {
+      0% {
+        opacity: 0;
+      }
+
+      50% {
+        opacity: 1;
+      }
+
+      100% {
+        opacity: 0;
+      }
+    }
+  }
+
+  .frame-pointer {
+    position: absolute;
+    top: 150rpx;
+    left: 60rpx;
+    width: 170rpx;
+    height: 125rpx;
+    animation: showFramePointer linear infinite 1s;
+    opacity: 0.7;
+
+    @keyframes showFramePointer {
+      0% {
+        left: 60rpx;
+        opacity: 0.7;
+      }
+
+      70% {
+        left: 20rpx;
+        opacity: 1;
+      }
+
+      100% {
+        left: 60rpx;
+        opacity: 0.7;
+      }
+    }
+  }
+
+}
+
+.camera-android-nobody {
+  opacity: 1;
+}
+
+
+.canvas {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+.skip-btn {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  background-color: red;
+  color: white;
+  transform: translate(-50%, -50%);
+}
+
+.subtitle {
+  position: fixed;
+  color: white;
+  padding: 20rpx 40rpx;
+  border-radius: 42rpx;
+  background-color: #ff6d3cc7;
+  left: 100rpx;
+  bottom: 150rpx;
+  left: 50%;
+  font-size: 40rpx;
+  transform: translateX(-50%);
+  line-height: 60rpx;
+  opacity: 0;
+  animation: showSubTitle 0.2s forwards linear;
+}
+
+@keyframes showSubTitle {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}

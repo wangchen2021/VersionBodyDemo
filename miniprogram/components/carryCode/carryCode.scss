@@ -1,0 +1,102 @@
+/* components/carryCode/carryCode.wxss */
+.center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.code-container {
+    width: 607rpx;
+    height: 713rpx;
+    position: relative;
+}
+
+.h1 {
+    position: absolute;
+    color: #3F507D;
+    text-align: center;
+    font-family: "Source Han Sans CN";
+    font-size: 45rpx;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 136%;
+    /* 65.28px */
+    letter-spacing: 2rpx;
+    width: 100%;
+    top: 231rpx;
+}
+
+.input {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 320rpx;
+    width: 394rpx;
+    height: 111rpx;
+    border-radius: 23rpx;
+    background: #DBE7F6;
+    box-sizing: border-box;
+    padding: 5rpx 30rpx;
+    color: #3F507D;
+
+    text-align: center;
+    font-family: "Source Han Sans CN";
+    font-size: 48rpx;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 136%;
+    /* 65.28px */
+    letter-spacing: 2rpx;
+}
+
+.exit {
+    display: block;
+    width: 75rpx;
+    height: 75rpx;
+    margin: 0 auto;
+    margin-top: 30rpx;
+}
+
+.btn {
+    color: #FFF;
+    font-family: "Source Han Sans CN";
+    font-size: 34rpx;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 86rpx;
+    text-align: center;
+    position: absolute;
+    left: 50%;
+    bottom: 121rpx;
+    transform: translateX(-50%);
+    width: 300rpx;
+    height: 86rpx;
+    border-radius: 12rpx;
+    border: 0.5rpx solid #89ACF0;
+    background: linear-gradient(111deg, #B1D0F0 -34.78%, #609DE3 87.16%);
+    box-shadow: -3rpx -4rpx 4rpx 0rpx rgba(0, 0, 0, 0.10) inset, 6rpx 8rpx 11.1rpx 0rpx rgba(255, 255, 255, 0.40) inset, 3rpx 7rpx 18.6rpx 0rpx rgba(25, 30, 47, 0.17);
+}
+
+.code-bird {
+    width: 175rpx;
+    height: 175rpx;
+    position: absolute;
+    top: 145rpx;
+    left: 50%;
+    transform: translateX(-50%);
+    clip-path: inset(0% 0% 80% 0%);
+    animation: showBird ease forwards 1s;
+
+    @keyframes showBird {
+        from {
+            top: 145rpx;
+            clip-path: inset(0% 0% 80% 0%);
+        }
+
+        to {
+            top: 30rpx;
+            clip-path: inset(0% 0% 0% 0%);
+        }
+    }
+}

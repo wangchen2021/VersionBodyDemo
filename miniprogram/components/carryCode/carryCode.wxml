@@ -1,0 +1,12 @@
+<mask wx:if="{{show}}">
+    <view class="center">
+        <image class="code-container" src="https://cos.painspective.com/jizhi/miniProgram/public/index/20240416-102603.png">
+            <image src="https://cos.painspective.com/jizhi/miniProgram/public/index/20240416-103032.png" class="code-bird" mode="widthFix"></image>
+            <view class="h1">{{language['输入兑换码']}}</view>
+            <input value="{{code}}" bindinput="inputChange" maxlength="10" class="input" />
+            <view style="opacity: 0.5;" wx:if="{{code.length===0}}" class="btn">{{language['确认']}}</view>
+            <view wx:else bind:tap="submit" class="btn">{{language['确认']}}</view>
+        </image>
+        <image bind:tap="exit" mode="widthFix" class="exit" src="../../assets/icon/common/exitC.svg"></image>
+    </view>
+</mask>
