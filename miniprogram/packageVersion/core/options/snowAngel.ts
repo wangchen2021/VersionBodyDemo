@@ -38,21 +38,29 @@ const checkHorizontalShoulder = (_angle: any, points: points2d[], currentSeconds
   }
   const vector = { x: points[5].x - points[6].x, y: points[5].y - points[6].y }
   const angle = calculateAngleBetweenVectors(vector, { x: 1, y: 0 })
-  console.log(angle);
   return angle > 10 ? CvOptionsEmitFlag.EMIT : CvOptionsEmitFlag.NOT_EMIT
 }
 
-const checkArms = (_angle: any, _points: points2d[], _currentSeconds: number) => {
+const checkArms = (_angle: any, points: points2d[], _currentSeconds: number) => {
+  const vector1 = { x: points[4].x - points[18].x, y: points[4].y - points[18].y }
+  const vector2 = { x: points[3].x - points[17].x, y: points[3].y - points[17].y }
+  const referY = { x: 0, y: 1 }
+  const vectorAngle1 = calculateAngleBetweenVectors(vector1, referY)
+  const vectorAngle2 = calculateAngleBetweenVectors(vector2, referY)
+  const timeSlots: Array<number | string>[] = [
+    ["20", "4:00"],
+  ]
+  if (vectorAngle1 > 60 && vectorAngle2 > 60 && judgeTimeInterval(timeSlots, _currentSeconds)) {
+    return CvOptionsEmitFlag.EMIT
+  }
   return CvOptionsEmitFlag.NOT_EMIT
 }
 
 const doGodJob = (_angle: any, _points: points2d[], _currentSeconds: number) => {
-  // const timeSlots: Array<number | string>[] = [
-  //   ["4:34", "5:00"],
-  // ]
-  // if (judgeTimeInterval(timeSlots, currentSeconds)) {
-  //   return CvOptionsEmitFlag.EMIT
-  // }
+  //30s后开始
+  if (_currentSeconds < 30) {
+    return CvOptionsEmitFlag.NOT_EMIT
+  }
   return CvOptionsEmitFlag.EMIT
 }
 

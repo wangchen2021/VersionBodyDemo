@@ -1,1 +1,1 @@
-<view></view>
+<button bind:tap="startVersion" class="button">开始测试</button>
