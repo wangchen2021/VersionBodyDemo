@@ -1,6 +1,6 @@
 import { calculateAngleBetweenVectors } from "../angle/mathTools";
 import { CvOptionsEmitFlag } from "./index";
-import { playaudio } from "./opsTools";
+import { judgeTimeInterval, playaudio } from "./opsTools";
 
 const checkOpenLegs = (_angle: any, points: points2d[], currentSeconds: number) => {
   //10s开始检测
@@ -31,20 +31,40 @@ const checkVerticalBody = (_angle: any, points: points2d[], currentSeconds: numb
   return angle > 20 ? CvOptionsEmitFlag.EMIT : CvOptionsEmitFlag.NOT_EMIT
 }
 
-const checkHorizontalShoulder = (_angle: any, points: points2d[]) => {
-
+const checkHorizontalShoulder = (_angle: any, points: points2d[], currentSeconds: number) => {
+  //10s开始检测直到最后
+  if (currentSeconds < 10) {
+    return CvOptionsEmitFlag.NOT_EMIT
+  }
+  const vector = { x: points[5].x - points[6].x, y: points[5].y - points[6].y }
+  const angle = calculateAngleBetweenVectors(vector, { x: 1, y: 0 })
+  console.log(angle);
+  return angle > 10 ? CvOptionsEmitFlag.EMIT : CvOptionsEmitFlag.NOT_EMIT
 }
 
-const checkArms = (_angle: any, points: points2d[]) => {
-
+const checkArms = (_angle: any, _points: points2d[], _currentSeconds: number) => {
+  return CvOptionsEmitFlag.NOT_EMIT
 }
 
-const doGodJob = (_angle: any, points: points2d[]) => {
-  return true
+const doGodJob = (_angle: any, _points: points2d[], _currentSeconds: number) => {
+  // const timeSlots: Array<number | string>[] = [
+  //   ["4:34", "5:00"],
+  // ]
+  // if (judgeTimeInterval(timeSlots, currentSeconds)) {
+  //   return CvOptionsEmitFlag.EMIT
+  // }
+  return CvOptionsEmitFlag.EMIT
 }
 
-const KeepGoing = (_angle: any, points: points2d[]) => {
-  return true
+const KeepGoing = (_angle: any, _points: points2d[], currentSeconds: number) => {
+  const timeSlots: Array<number | string>[] = [
+    ["1:31", "1:40"],
+    ["3:05", "3:15"],
+  ]
+  if (judgeTimeInterval(timeSlots, currentSeconds)) {
+    return CvOptionsEmitFlag.EMIT
+  }
+  return CvOptionsEmitFlag.NOT_EMIT
 }
 
 export const snowAngel: Record<string, CvOption> = {
@@ -68,10 +88,10 @@ export const snowAngel: Record<string, CvOption> = {
 
   checkHorizontalShoulder: {
     emit: checkHorizontalShoulder,
-    once: true,
+    once: false,
     data: "肩膀保持平直",
-    options: () => {
-
+    options: function (fn?: Function) {
+      return playaudio(snowAngel.checkHorizontalShoulder, "https://vcos.changan-health.com/thi/webapp/20251130/4.mp3", fn)
     }
   },
 
@@ -79,8 +99,8 @@ export const snowAngel: Record<string, CvOption> = {
     emit: checkArms,
     once: false,
     data: "尽量抬高双臂，指尖在耳朵上方",
-    options: () => {
-
+    options: function (fn?: Function) {
+      return playaudio(snowAngel.checkArms, "https://vcos.changan-health.com/thi/webapp/20251130/5.mp3", fn)
     }
   },
 
@@ -88,18 +108,20 @@ export const snowAngel: Record<string, CvOption> = {
     emit: doGodJob,
     once: false,
     data: "做的很棒",
-    options: () => {
-
-    }
+    options: function (fn?: Function) {
+      return playaudio(snowAngel.doGodJob, "https://vcos.changan-health.com/thi/webapp/20251130/6.mp3", fn)
+    },
+    interval: 30
   },
 
   KeepGoing: {
     emit: KeepGoing,
     once: false,
     data: "继续加油",
-    options: () => {
-
-    }
+    options: function (fn?: Function) {
+      return playaudio(snowAngel.KeepGoing, "https://vcos.changan-health.com/thi/webapp/20251130/7.mp3", fn)
+    },
+    interval: 15
   },
 }
 

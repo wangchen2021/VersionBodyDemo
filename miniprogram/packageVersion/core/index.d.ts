@@ -82,7 +82,15 @@ type CvOption = {
   emit: Function,
   once: Boolean,
   options: Function,
-  data: any
+  data: any,
+  lastEmitTime?: number,
+  interval?: number
+}
+
+type CvOptionRecord = {
+  cvOption: CvOption
+  data: any,
+  second: number,
 }
 
 type ReportShowData = {

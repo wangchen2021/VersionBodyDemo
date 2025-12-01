@@ -38,6 +38,7 @@ export default class ChenV {
   detectResAngle: number[] = []
   currentSeconds = 0
   optionsRun = false
+  optionsRecord: CvOptionRecord[] = []
 
   constructor(wxPage: WechatMiniprogram.Page.Instance<{}, any>, videoCtx: WechatMiniprogram.VideoContext) {
     this.wxPage = wxPage
@@ -133,7 +134,16 @@ export default class ChenV {
 
   private getDetectingData(data: any) {
     //描绘身体轮廓
-    this.renderFrameWithData(data)
+    if (this.ifKeepCV) {
+      return this.detectBodyInFrame(data)
+    }
+    if (this.finish) return
+    if (this.detector.detectType === "body") {
+      this.frameRender.renderBodyFrame(data)
+    } else if (this.detector.detectType === "face") {
+      this.frameRender.renderFaceFrame(data)
+    }
+
     //计算角度数据
     const angle = this.computeAngleByData(data)
     // if (this.maxAngle < angle) this.maxAngle = angle
@@ -157,21 +167,39 @@ export default class ChenV {
     if (!angle || !points) return
     const deleteQueue: CvOption[] = []
     for (let item of this.optionsQueue) {
-      const { emit, once, options } = item
-      const emitRes = emit(angle, points, this.currentSeconds)
-      if (emitRes === CvOptionsEmitFlag.EMIT) {
-        const optionsRunner = () => options(function (option: CvOption) {
-          that.setSubtitle(option.data)
-        })
-        this.runOptions(optionsRunner)
+      const { emit, once, options, lastEmitTime, interval } = item
+      //调用时间间隔
+      const now = Date.now()
+      if ((lastEmitTime && interval) && now < lastEmitTime + interval * 1000) {
+        continue
       }
+      //判断触发
+      const emitRes = emit(angle, points, this.currentSeconds)
       if (once && emitRes === CvOptionsEmitFlag.EMIT || emitRes === CvOptionsEmitFlag.DELETE) {
         deleteQueue.push(item)
+      }
+      if (emitRes === CvOptionsEmitFlag.EMIT) {
+        const optionsRunner = () => options(function (option: CvOption) {
+          that.addCvOptionsRecord(option, option.data, that.currentSeconds)
+          that.setSubtitle(option.data)
+        })
+        item.lastEmitTime = now
+        this.runOptions(optionsRunner)
+        break
       }
     }
     this.optionsQueue = this.optionsQueue.filter((item) => {
       return !deleteQueue.includes(item)
     })
+  }
+
+  addCvOptionsRecord(cvOption: CvOption, data: any, second: number) {
+    const record: CvOptionRecord = {
+      cvOption,
+      data,
+      second,
+    }
+    this.optionsRecord.push(record)
   }
 
   setSubtitle(value: string) {
@@ -187,18 +215,6 @@ export default class ChenV {
       this.setSubtitle("")
       this.optionsRun = false
     }, 1500);
-  }
-
-  private renderFrameWithData(data: any) {
-    if (this.ifKeepCV) {
-      return this.detectBodyInFrame(data)
-    }
-    if (this.finish) return
-    if (this.detector.detectType === "body") {
-      this.frameRender.renderBodyFrame(data)
-    } else if (this.detector.detectType === "face") {
-      this.frameRender.renderFaceFrame(data)
-    }
   }
 
   private computeAngleByData(data: any) {
@@ -253,8 +269,8 @@ export default class ChenV {
   }
 
   private detectBodyInFrame(data: any) {
+    if (this.frameCVTimer) return
     if (this.cvCheckProcessData(data)) {
-      if (this.frameCVTimer) return
       let seconds = 5
       this.wxPage.setData({
         frameCheck: this.frameCheckDirection
@@ -265,7 +281,7 @@ export default class ChenV {
             frameCheck: `${this.frameCheckDirection}_success`
           })
         }
-        if (seconds === 0) {
+        else if (seconds === 0) {
           this.wxPage.setData({
             frameCheck: false,
             cvCheck: true,
@@ -347,7 +363,7 @@ export default class ChenV {
     })
     this.setDetectDataByType("body")
     if (this.frameCheckDirection === "front") {
-      this.audioCtx.src = "https://vcos.changan-health.com/thi/webapp/20251130/8.mp3"
+      this.audioCtx.src = "https://vcos.changan-health.com/thi/webapp/20251130/9.mp3"
     } else {
       this.audioCtx.src = CDN + "/public/audios/sideCV.MP3"
     }
@@ -381,6 +397,12 @@ export default class ChenV {
     this.detectFinish([this.maxAngle])
   }
 
+  reset() {
+    this.setCurrentSeconds(0)
+    this.setOptions({})
+    this.optionsRecord = []
+    this.optionsRun = false
+  }
 
   private getSuitableValue(arr: number[]) {
     // 计算数组的平均值

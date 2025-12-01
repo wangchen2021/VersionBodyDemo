@@ -1,7 +1,6 @@
 import ChenV from "./chenV";
 import { CDN } from "../../api/config"
 import { getFlexSubmitParam } from "./plan/estimatePlan";
-import { postParamToReport } from "../../api/apis";
 const app = getApp<IAppOption>()
 enum stateCode {
   TEACH_VIDEO,
@@ -60,18 +59,10 @@ export class VersionState {
   }
 
   private async processState() {
-    if (this.plans.length === 0) {
+    if (!this.plans || this.plans.length === 0) {
       this.state = stateCode.FINISH
       app.globalData.flexData = getFlexSubmitParam(this.result, app.globalData.selectEstimatePlan)
-      wx.setStorageSync("flexData", app.globalData.flexData)
-      const reportType = Number(wx.getStorageSync("label_type"))
-      if (reportType === 1) {
-        wx.redirectTo({
-          url: "/packageQR/pages/questions/questions"
-        })
-      } else {
-        await postParamToReport()
-      }
+      //todo 结果处理
       return
     } else if (this.plans[0].checkDirection === 'side' && this.chenV.frameCheckDirection === "front") {
       this.state = stateCode.CV_CHECK_SIDE
@@ -181,7 +172,7 @@ export class VersionState {
 
   onVideoEnd() {
 
-    this.resetChenV()
+    this.chenV.reset()
 
     //教学视频结束
     if (this.state === stateCode.TEACH_VIDEO) {
@@ -215,11 +206,6 @@ export class VersionState {
         return
       }
     }
-  }
-
-  private resetChenV() {
-    this.chenV.setCurrentSeconds(0)
-    this.chenV.setOptions({})
   }
 
   stop() {
