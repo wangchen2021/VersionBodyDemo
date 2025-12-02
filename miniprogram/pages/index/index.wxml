@@ -1,1 +1,74 @@
-<button bind:tap="startVersion" class="button">开始测试</button>
+<view style="height: 100rpx;"></view>
+<view class="home-container">
+
+  <!-- 顶部导航栏 -->
+  <view class="nav-bar">
+    <view class="nav-logo">AI动捕跟练</view>
+    <button class="nav-btn" bindtap="goToGuide">使用指南</button>
+  </view>
+
+  <!-- 核心宣传区 -->
+  <view class="hero-section">
+    <view class="hero-content">
+      <view class="hero-tag">AI视觉算法加持</view>
+      <view class="hero-title">实时动作矫正<br />科学跟练不受伤</view>
+      <view class="hero-desc">通过先进的计算机视觉技术，精准识别身体关节点，<br />实时反馈矫正建议，在家也能享受专业指导</view>
+      <button class="start-btn" bindtap="startPractice">立即体验跟练</button>
+    </view>
+    <view class="hero-img-container">
+      <image src="/images/hero-bg.png" class="hero-bg" mode="cover"></image>
+      <image src="/images/ai-vision.png" class="hero-img" mode="widthFix"></image>
+    </view>
+  </view>
+
+  <!-- 核心卖点区 -->
+  <view class="features-section">
+    <view class="section-title">为什么选择我们？</view>
+    <view class="features-list">
+      <view class="feature-item">
+        <view class="feature-icon-wrap">
+          <image src="/images/feature-1.png" class="feature-icon" mode="widthFix"></image>
+        </view>
+        <view class="feature-title">实时动作捕捉</view>
+        <view class="feature-desc">毫秒级识别身体关节点，动作追踪无延迟</view>
+      </view>
+      <view class="feature-item">
+        <view class="feature-icon-wrap">
+          <image src="/images/feature-2.png" class="feature-icon" mode="widthFix"></image>
+        </view>
+        <view class="feature-title">智能矫正指导</view>
+        <view class="feature-desc">AI算法分析动作标准度，实时语音反馈</view>
+      </view>
+      <view class="feature-item">
+        <view class="feature-icon-wrap">
+          <image src="/images/feature-3.png" class="feature-icon" mode="widthFix"></image>
+        </view>
+        <view class="feature-title">无需额外设备</view>
+        <view class="feature-desc">仅需手机摄像头，随时随地开启专业训练</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 效果展示区 -->
+  <view class="showcase-section">
+    <view class="section-title">AI矫正效果展示</view>
+    <view class="showcase-container">
+      <image src="/images/showcase-1.png" class="showcase-img" mode="widthFix"></image>
+      <image src="/images/showcase-2.png" class="showcase-img" mode="widthFix"></image>
+    </view>
+  </view>
+
+  <!-- 底部行动区 -->
+  <view class="cta-section">
+    <view class="cta-content">
+      <view class="cta-title">开始你的科学跟练之旅</view>
+      <view class="cta-desc">AI陪伴，让每一次训练都高效、安全</view>
+      <button class="cta-btn" bindtap="startPractice">立即开启跟练</button>
+    </view>
+  </view>
+
+  <!-- 页脚 -->
+  <view class="footer">
+    <view class="footer-text">© 2025 AI动捕跟练助手 版权所有</view>
+  </view>
+</view>

@@ -1,4 +1,4 @@
-<video muted bindtimeupdate="onTimeUpdate" bindended="videoEnd" enable-progress-gesture="{{false}}" loop="{{true}}" show-center-play-btn="{{false}}" object-fit="cover" src="{{videoSrc}}" id="myVideo" controls="{{false}}" class="video">
+<video bindtimeupdate="onTimeUpdate" bindended="videoEnd" enable-progress-gesture="{{false}}" loop="{{true}}" show-center-play-btn="{{false}}" object-fit="cover" src="{{videoSrc}}" id="myVideo" controls="{{false}}" class="video">
     <view wx:if="{{videoFilter}}" class="video-filter"></view>
     <!-- 人体采集相机 -->
     <!-- 安卓机处理 -->

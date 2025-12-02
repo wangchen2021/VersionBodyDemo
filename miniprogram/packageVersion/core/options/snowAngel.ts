@@ -1,6 +1,6 @@
 import { calculateAngleBetweenVectors } from "../angle/mathTools";
 import { CvOptionsEmitFlag } from "./index";
-import { judgeTimeInterval, playaudio } from "./opsTools";
+import { formatTimeToSeconds, judgeTimeInterval, playaudio } from "./opsTools";
 
 const checkOpenLegs = (_angle: any, points: points2d[], currentSeconds: number) => {
   //10s开始检测
@@ -41,16 +41,60 @@ const checkHorizontalShoulder = (_angle: any, points: points2d[], currentSeconds
   return angle > 10 ? CvOptionsEmitFlag.EMIT : CvOptionsEmitFlag.NOT_EMIT
 }
 
+function getPutHeadsUpTimeSlotsSeconds() {
+  const putHeadsUpTimeSlots = [
+    ["19", "20"],
+    ["26", "27"],
+    ["34", "35"],
+    ["42", "43"],
+    ["49", "50"],
+    ["56", "57"],
+    ["1:04", "1:05"],
+    ["1:11", "1:12"],
+    ["1:19", "1:20"],
+    ["1:26", "1:27"],
+    ["1:52", "1:53"],
+    ["1:59", "2:01"],
+    ["2:07", "2:08"],
+    ["2:14", "2:15"],
+    ["2:22", "2:23"],
+    ["2:29", "2:30"],
+    ["2:37", "2:38"],
+    ["2:44", "2:45"],
+    ["2:52", "2:53"],
+    ["2:59", "3:00"],
+    ["3:25", "3:26"],
+    ["3:32", "3:33"],
+    ["3:40", "3:41"],
+    ["3:47", "3:48"],
+    ["3:55", "3:56"],
+    ["4:02", "4:03"],
+    ["4:10", "4:11"],
+    ["4:17", "4:18"],
+    ["4:25", "4:26"],
+    ["4:32", "4:33"],
+  ]
+  let res = new Map()
+  for (let slot of putHeadsUpTimeSlots) {
+    const start = formatTimeToSeconds(slot[0])
+    const end = formatTimeToSeconds(slot[1])
+    for (let i = start; i <= end; i++) {
+      res.set(i, true)
+    }
+  }
+  return res
+}
+
+const putHeadsUpSecondsMap = getPutHeadsUpTimeSlotsSeconds()
+
+
 const checkArms = (_angle: any, points: points2d[], _currentSeconds: number) => {
   const vector1 = { x: points[4].x - points[18].x, y: points[4].y - points[18].y }
   const vector2 = { x: points[3].x - points[17].x, y: points[3].y - points[17].y }
   const referY = { x: 0, y: 1 }
   const vectorAngle1 = calculateAngleBetweenVectors(vector1, referY)
   const vectorAngle2 = calculateAngleBetweenVectors(vector2, referY)
-  const timeSlots: Array<number | string>[] = [
-    ["20", "4:00"],
-  ]
-  if (vectorAngle1 > 60 && vectorAngle2 > 60 && judgeTimeInterval(timeSlots, _currentSeconds)) {
+  if (vectorAngle1 > 70 && vectorAngle2 > 70 && putHeadsUpSecondsMap.has(_currentSeconds)) {
     return CvOptionsEmitFlag.EMIT
   }
   return CvOptionsEmitFlag.NOT_EMIT
@@ -119,7 +163,7 @@ export const snowAngel: Record<string, CvOption> = {
     options: function (fn?: Function) {
       return playaudio(snowAngel.doGodJob, "https://vcos.changan-health.com/thi/webapp/20251130/6.mp3", fn)
     },
-    interval: 30
+    interval: 35
   },
 
   KeepGoing: {

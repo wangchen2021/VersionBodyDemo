@@ -47,5 +47,5 @@ const formatTimeToSeconds = (targetTime: number | string) => {
 export {
   playaudio,
   judgeTimeInterval,
-  formatTimeToSeconds
+  formatTimeToSeconds,
 }

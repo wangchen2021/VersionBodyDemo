@@ -454,7 +454,7 @@ export const estimatePlan: estimatePlanItem[] = [
     },
 
     videoSrc: {
-      left: "http://1312576865.vod-qcloud.com/1600c0eevodcq1312576865/5a06fc311397757900586042892/f0.mp4",
+      left: "https://vcos.changan-health.com/thi/webapp/20251130/10.mp4",
       right: ""
     },
 
